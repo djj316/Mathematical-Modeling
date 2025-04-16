@@ -18,3 +18,13 @@ for(int i=1;i<=n;i++)
     //查找一块区间的值
     ans=pre[r][d]-pre[l][d]-pre[r][u]+pre[l][u];
 ```
+
+2、1维差分,通过O(n)预处理diff数组，之后可以在O(1)内对一段区间内的值进行修改。
+```
+for(int i=1;i<=n;i++)
+    diff[i]=a[i]-a[i-1];
+
+diff[l]++,diff[r+1]--;//将[l,r]区间内的值+1
+for(int i=1;i<=n;i++)
+    a[i]=diff[i]+a[i-1];//还原a数组
+```
